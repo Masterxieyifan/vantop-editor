@@ -1,6 +1,6 @@
 {
   "name": "vantop-editor",
-  "version": "1.0.4",
+  "version": "0.0.1",
   "license": "MIT",
   "description": "vantop-editor 富文本编辑器",
   "main": "lib/vantop-editor.umd.min.js",
