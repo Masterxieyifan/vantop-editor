@@ -1,0 +1,86 @@
+{
+  "name": "vantop-editor",
+  "version": "1.0.4",
+  "license": "MIT",
+  "description": "vantop-editor 富文本编辑器",
+  "main": "lib/vantop-editor.umd.min.js",
+  "files": [
+    "lib",
+    "packages"
+  ],
+  "keyword": "vantop-editor",
+  "scripts": {
+    "serve": "node generateIcon.js && vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "build": "node generateIcon.js && vue-cli-service build --target lib --name vantop-editor --dest lib packages/index.js",
+    "commit": "git-cz",
+    "prepublishOnly": "npm run build",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "postversion": "git push --follow-tags"
+  },
+  "devDependencies": {
+    "vue": "^2.5.17",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "commitizen": "^4.2.3",
+    "commitlint-config-cz": "^0.13.2",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.3",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "NODE_ENV=production lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-console": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
+}
